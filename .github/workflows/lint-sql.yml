@@ -1,0 +1,18 @@
+name: Lint SQL
+on:
+  push:
+  pull_request:
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install sqlfluff
+      - run: sqlfluff --version
+      - name: Lint Postgres SQL
+        run: sqlfluff lint sql/postgres --dialect postgres
+      - name: Lint MySQL SQL
+        run: sqlfluff lint sql/mysql --dialect mysql
