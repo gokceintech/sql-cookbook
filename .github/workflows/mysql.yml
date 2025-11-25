@@ -1,0 +1,34 @@
+name: Test MySQL
+on:
+  push:
+  pull_request:
+jobs:
+  mysql:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: sqlexpert
+        options: >-
+          --health-cmd="mysqladmin ping -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+        ports:
+          - 3306:3306
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mysql client
+        run: sudo apt-get update && sudo apt-get install -y default-mysql-client
+      - name: Load schema & data
+        run: mysql -h 127.0.0.1 -uroot -proot sqlexpert < sql/mysql/schema/ecommerce_schema.sql
+      - name: Run example query
+        run: mysql -h 127.0.0.1 -uroot -proot -N -B sqlexpert < sql/mysql/queries/top_customers.sql
+      - name: Assert query returns rows
+        run: |
+          set -e
+          ROWS=$(mysql -h 127.0.0.1 -uroot -proot -N -B sqlexpert < sql/mysql/queries/top_customers.sql | wc -l)
+          echo "Rows: $ROWS"
+          test "$ROWS" -ge 1
