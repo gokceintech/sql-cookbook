@@ -1,11 +1,11 @@
 # SQL Cookbook & Playbook
 
-> A clean, tested collection of SQL recipes (PostgreSQL & MySQL) with CI linting, example data, and a GitHub Pages site.
+> Production-minded SQL recipes with demo data and CI-tested queries for **PostgreSQL** and **MySQL**.
 
-![Lint](https://github.com/USERNAME/REPO/actions/workflows/lint-sql.yml/badge.svg)
-![Postgres Tests](https://github.com/USERNAME/REPO/actions/workflows/test-postgres.yml/badge.svg)
-![MySQL Tests](https://github.com/USERNAME/REPO/actions/workflows/test-mysql.yml/badge.svg)
-[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://USERNAME.github.io/REPO/)
+[![Lint](https://github.com/gokceintech/sql-cookbook/actions/workflows/lint-sql.yml/badge.svg)](../../actions)
+[![Postgres Tests](https://github.com/gokceintech/sql-cookbook/actions/workflows/test-postgres.yml/badge.svg)](../../actions)
+[![MySQL Tests](https://github.com/gokceintech/sql-cookbook/actions/workflows/test-mysql.yml/badge.svg)](../../actions)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://gokceintech.github.io/sql-cookbook/)
 
 ## Quick start
 ```bash
