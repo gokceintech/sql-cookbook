@@ -1,0 +1,35 @@
+name: Test Postgres
+on:
+  push:
+  pull_request:
+jobs:
+  pg:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: sqlexpert
+        options: >-
+          --health-cmd="pg_isready -U postgres" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install psql client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - name: Load schema & data
+        run: psql "postgresql://postgres:postgres@localhost:5432/sqlexpert" -f sql/postgres/schema/ecommerce_schema.sql
+      - name: Run example query
+        run: psql "postgresql://postgres:postgres@localhost:5432/sqlexpert" -f sql/postgres/queries/top_customers.sql
+      - name: Assert query returns rows
+        run: |
+          set -e
+          ROWS=$(psql "postgresql://postgres:postgres@localhost:5432/sqlexpert" -At -f sql/postgres/queries/top_customers.sql | wc -l)
+          echo "Rows: $ROWS"
+          test "$ROWS" -ge 1
