@@ -1,9 +1,29 @@
+---
+title: SQL Cookbook & Playbook
+layout: page
+---
+
 # SQL Cookbook & Playbook
 
-Welcome! This site documents the patterns used in this repository.
+A curated set of **practical SQL recipes** with **demo data** and **CI-tested queries** for PostgreSQL & MySQL.
 
-## Sections
-- [PostgreSQL Patterns](cheat-sheets/postgres.md)
-- [MySQL Patterns](cheat-sheets/mysql.md)
+> Source code: [github.com/gokceintech/sql-cookbook](https://github.com/gokceintech/sql-cookbook)
 
-> The source of these docs lives in `/docs` and is auto-published with GitHub Pages.
+## Quick start
+
+- **PostgreSQL patterns →** [postgres.md](./postgres.md)  
+- **MySQL patterns →** [mysql.md](./mysql.md)  
+- **Repository →** View schemas, queries, and workflows in `/sql` and `/.github/workflows`.
+
+---
+
+## What’s inside
+- ✅ Clean schemas with seed data  
+- ✅ Queries written for readability (CTEs, explicit columns)  
+- ✅ CI: lint with **sqlfluff**, run queries on real Postgres/MySQL in Actions  
+- ✅ GitHub Pages site (these docs)
+
+---
+
+## Contributing
+Spotted a useful pattern? Open a PR! See **CONTRIBUTING.md** in the repo.
