@@ -1,3 +1,20 @@
 title: SQL Cookbook & Playbook
-description: Practical SQL recipes with CI tests
+description: Practical SQL recipes with runnable tests for PostgreSQL and MySQL.
 theme: minima
+
+# Show pages in the top navigation (Minima)
+header_pages:
+  - index.md
+  - postgres.md
+  - mysql.md
+  - about.md
+
+# Site options
+minima:
+  social_links:
+    - platform: github
+      user_url: https://github.com/gokceintech/sql-cookbook
+  skin: auto   # light/dark follows system
+
+# Build
+markdown: kramdown
